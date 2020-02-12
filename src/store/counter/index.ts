@@ -1,12 +1,15 @@
-import { Getters, Mutations, Actions } from "./types";
-import { State, IGetters, IMutations, IActions } from "./counterType";
+import { Getters, Mutations, Actions } from "vuex";
+import { S, G, M, A } from "@/store/counter/type";
 
-const state: State = {
+const state: S = {
   count: 0
 };
 
-const getters: Getters<State, IGetters> = {
-  double(state) {
+const getters: Getters<S, G> = {
+  double(state, getters, rootState, rootGetters) {
+    console.log(rootState.counter.count);
+    console.log("aa", rootGetters["counter/double"]);
+    console.log(getters.expo);
     return state.count * 2;
   },
   expo2(state) {
@@ -17,7 +20,7 @@ const getters: Getters<State, IGetters> = {
   }
 };
 
-const mutations: Mutations<State, IMutations> = {
+const mutations: Mutations<S, M> = {
   setCount(state, payload) {
     state.count = payload.amount;
   },
@@ -26,18 +29,16 @@ const mutations: Mutations<State, IMutations> = {
   },
   increment(state) {
     state.count++;
+  },
+  decrement(state) {
+    state.count--;
   }
 };
 
-const actions: Actions<
-  State,
-  IActions,
-  IGetters,
-  IMutations,
-  RootState, // TODO:
-  IRootGetters // TODO:
-> = {
+const actions: Actions<S, A, G, M> = {
   asyncSetCount(ctx, payload) {
+    console.log(ctx.rootState.counter.count);
+    console.log(ctx.rootGetters["counter/expo2"]);
     ctx.commit("setCount", { amount: payload.amount });
   },
   asyncMulti(ctx, payload) {
@@ -45,6 +46,9 @@ const actions: Actions<
   },
   asyncIncrement(ctx) {
     ctx.commit("increment");
+  },
+  asyncDecrement(ctx) {
+    ctx.commit("decrement");
   }
 };
 

@@ -125,6 +125,16 @@ export default Vue.extend({
   name: "HelloWorld",
   props: {
     msg: String
+  },
+  methods: {
+    increment(payload: { amount: number }) {
+      this.$store.commit("counter/setCount", payload); // $store: typeの定義が優先されるため、型の補完が効かない
+    }
+  },
+  computed: {
+    double() {
+      return this.$store.getters["counter/double"];
+    }
   }
 });
 </script>
