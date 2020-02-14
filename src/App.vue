@@ -16,13 +16,12 @@ export default Vue.extend({
     HelloWorld
   },
   async created() {
-    GithubApi
-      .fetchUsers()
+    GithubApi.fetchUsers()
       .then(users => console.log(users))
       .catch(e => {
-        console.log(e.response)
-        console.log(e.response.status)
-        console.log(e.message)
+        console.log(e.response);
+        console.log(e.response.status);
+        console.log(e.message);
       });
   }
 });
