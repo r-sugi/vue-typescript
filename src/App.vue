@@ -8,11 +8,22 @@
 <script lang="ts">
 import Vue from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
+import { GithubApi } from "@/lib/api/apiClient";
 
 export default Vue.extend({
   name: "App",
   components: {
     HelloWorld
+  },
+  async created() {
+    GithubApi
+      .fetchUsers()
+      .then(users => console.log(users))
+      .catch(e => {
+        console.log(e.response)
+        console.log(e.response.status)
+        console.log(e.message)
+      });
   }
 });
 </script>
