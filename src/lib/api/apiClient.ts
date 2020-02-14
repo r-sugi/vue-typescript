@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GithubUsers } from "./type";
+import { GithubUsers } from "@/lib/api/type";
 
 export class GithubApi {
   private static $axios = axios.create();

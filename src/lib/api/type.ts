@@ -32,4 +32,6 @@ interface GithubUser {
   updated_at: string;
 }
 
-export interface GithubUsers {}
+export interface GithubUsers {
+  githubUsers: GithubUser[];
+}
