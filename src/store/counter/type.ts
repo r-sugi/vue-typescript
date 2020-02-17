@@ -4,14 +4,10 @@ interface S {
 
 interface G {
   double: number;
-  expo2: number;
-  expo: (amount: number) => number;
 }
 
 interface RG {
   "counter/double": G["double"];
-  "counter/expo2": G["expo2"];
-  "counter/expo": G["expo"];
 }
 
 interface M {

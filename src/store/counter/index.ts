@@ -7,16 +7,9 @@ const state: S = {
 
 const getters: Getters<S, G> = {
   double(state, getters, rootState, rootGetters) {
-    console.log(rootState.counter.count);
-    console.log("aa", rootGetters["counter/double"]);
-    console.log(getters.expo);
-    return state.count * 2;
-  },
-  expo2(state) {
-    return state.count ** 2;
-  },
-  expo(state) {
-    return amount => state.count ** amount;
+    // console.log(rootState.counter.count);
+    // console.log("aa", rootGetters["counter/double"]);
+    return state.count;
   }
 };
 
