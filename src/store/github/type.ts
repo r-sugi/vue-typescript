@@ -1,23 +1,31 @@
+import { GithubUser } from "./class";
+
 interface S {
-  users: GithubUsers | never[];
+  users: GithubUser[] | never[];
 }
 
-interface G {}
+interface G {
+  users: GithubUser[] | never[];
+}
+
+interface RG {
+  "github/users": G["users"];
+}
 
 interface M {
-  setUsers: GithubUsers;
+  setGithubUsers: GithubUser[];
 }
 
 interface RM {
-  "github/setUsers": M["setUsers"];
+  "github/setGithubUsers": M["setGithubUsers"];
 }
 
 interface A {
-  asyncFetchUsers: GithubUsers;
+  fetchGithubUsers: GithubUser[];
 }
 
 interface RA {
-  "github/asyncFetchUsers": A["asyncFetchUsers"];
+  "github/fetchGithubUsers": A["fetchGithubUsers"];
 }
 
 export { S, G, M, RM, A, RA };

@@ -1,9 +1,9 @@
 import { $axios } from "@/plugins/axios";
-import { GithubUsers } from "@/lib/api/type";
+import { RequestGithubUser } from "@/lib/api/type";
 
 export class GithubApi {
-  static fetchUsers(): Promise<GithubUsers> {
-    const url = "https://api.github.com/sers";
-    return $axios.get<GithubUsers>(url);
+  static fetchUsers(): Promise<RequestGithubUser> {
+    const url = "https://api.github.com/users";
+    return $axios.get<RequestGithubUser>(url);
   }
 }

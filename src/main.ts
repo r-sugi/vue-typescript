@@ -3,10 +3,9 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
-
 Vue.config.productionTip = false;
 
-if (process.env.NODE_ENV === 'development') console.clear();
+if (process.env.NODE_ENV === "development") console.clear();
 
 new Vue({
   router,
