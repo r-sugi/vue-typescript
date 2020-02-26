@@ -1,13 +1,12 @@
-name: github page
+name: deploy to github-pages
 
 on:
   push:
     branches:
-      - '*'
-      - '!master'
+      - 'master'
 
 jobs:
-  build-deploy:
+  build-test:
     runs-on: ubuntu-18.04
 
     steps:
@@ -30,9 +29,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: unit test
-      run: npm run test:unit
+    - name: build
+      run: npm run build
 
-    - name: e2e test
-      run: npm run test:e2e:ci
-
+    - name: deploy
+      run: npm run deploy:githubpage
