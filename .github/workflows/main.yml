@@ -38,11 +38,3 @@ jobs:
     - name: e2e test
       run: npm run test:e2e:ci
 
-    - name: build
-      run: npm run build
-
-    - name: deploy
-      uses: r-sugi/vue-typescript@master
-      with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        publish_dir: ./dist
