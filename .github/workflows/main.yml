@@ -3,7 +3,7 @@ name: github page
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   build-deploy:
@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+      with:
+        ref: dev
 
     - name: setup node
       uses: actions/setup-node@v1
