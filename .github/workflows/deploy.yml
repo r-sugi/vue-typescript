@@ -33,6 +33,7 @@ jobs:
       run: npm run build
 
     - name: deploy
-      run: npm run deploy:githubpage
+      uses: r-sugi/vue-typescript@gh-pages
       with:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        publish_dir: ./dist
