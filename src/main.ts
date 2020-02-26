@@ -3,12 +3,10 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
-import VueCookies from "vue-cookies"
-Vue.use(VueCookies)
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
 
 Vue.config.productionTip = false;
-
-if (process.env.NODE_ENV === "development") console.clear();
 
 new Vue({
   router,

@@ -6,9 +6,7 @@ const state: S = {
 };
 
 const getters: Getters<S, G> = {
-  double(state, getters, rootState, rootGetters) {
-    // console.log(rootState.counter.count);
-    // console.log("aa", rootGetters["counter/double"]);
+  double(state) {
     return state.count;
   }
 };

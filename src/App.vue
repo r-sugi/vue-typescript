@@ -13,7 +13,7 @@
 <script lang="ts">
 import Vue from "vue";
 import HelloWorld from "./components/HelloWorld.vue";
-import { mapState, mapActions } from "vuex";
+import { mapActions } from "vuex";
 export default Vue.extend({
   name: "App",
   components: {
