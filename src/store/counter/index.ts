@@ -30,8 +30,6 @@ const mutations: Mutations<S, M> = {
 
 const actions: Actions<S, A, G, M> = {
   asyncSetCount(ctx, payload) {
-    console.log(ctx.rootState.counter.count);
-    console.log(ctx.rootGetters["counter/expo2"]);
     ctx.commit("setCount", { amount: payload.amount });
   },
   asyncMulti(ctx, payload) {

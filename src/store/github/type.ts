@@ -28,4 +28,4 @@ interface RA {
   "github/fetchGithubUsers": A["fetchGithubUsers"];
 }
 
-export { S, G, M, RM, A, RA };
+export { S, G, M, RM, A, RA, RG };

@@ -17,9 +17,10 @@ const actions: Actions<S, A, G, M> = {
         );
       })
       .catch(e => {
-        console.log(e.response);
-        console.log(e.response.status);
-        console.log(e.message);
+        throw e
+        // console.log(e.response);
+        // console.log(e.response.status);
+        // console.log(e.message);
       });
   }
 };
