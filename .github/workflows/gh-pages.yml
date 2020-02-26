@@ -9,7 +9,7 @@ jobs:
   build-deploy:
     runs-on: ubuntu-18.04
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
 
     - name: setup node
       uses: actions/setup-node@v1
@@ -34,7 +34,7 @@ jobs:
       run: npm run build
 
     - name: deploy
-      uses: r-sugi/vue-typescript@v3
+      uses: r-sugi/vue-typescript@master
       with:
         deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         publish_dir: ./dist
