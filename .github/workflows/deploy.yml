@@ -32,6 +32,11 @@ jobs:
     - name: build
       run: npm run build
 
+    - name: Install SSH Client
+      uses: webfactory/ssh-agent@v0.2.0
+      with:
+        ssh-private-key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@3.3.2
       with:
