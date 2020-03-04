@@ -38,4 +38,4 @@ jobs:
         SSH: true
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: ./dist # The folder the action should deploy.
+        FOLDER: dist # The folder the action should deploy.
