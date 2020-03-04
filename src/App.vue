@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    テスト
     <template v-if="users.length > 0">
       <div v-for="u in users" :key="u.id">
         <p>{{ u.hoge }}</p>
