@@ -1,4 +1,4 @@
-export interface IGithubUser {
+export interface GithubUser {
   login: string;
   id: number;
   node_id: string;
@@ -33,5 +33,5 @@ export interface IGithubUser {
 }
 
 export interface GithubUsers {
-  githubUser: IGithubUser[];
+  githubUser: GithubUser[];
 }

@@ -1,7 +1,7 @@
 import { Getters, Mutations, Actions } from "vuex";
 import { S, G, M, A } from "@/store/github/type";
 import { GithubApi } from "@/lib/api/apiClient";
-import { GithubUser } from "./class";
+import { GithubUserImpl } from "./class";
 
 const state: S = {
   users: []
@@ -13,7 +13,7 @@ const actions: Actions<S, A, G, M> = {
       .then(res => {
         commit(
           "setGithubUsers",
-          res.data.map(userDTO => new GithubUser(userDTO))
+          res.data.map(userDTO => new GithubUserImpl(userDTO))
         );
       })
       .catch(e => {

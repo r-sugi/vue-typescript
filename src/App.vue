@@ -11,26 +11,36 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
-import { mapActions } from "vuex";
-export default Vue.extend({
-  name: "App",
+import { Vue, Component } from "vue-property-decorator";
+import * as Vuex from "vuex";
+import HelloWorld from "@/components/HelloWorld.vue";
+import { mapActions, mapState } from "vuex";
+import { S } from '@/store/github/type'
+
+@Component({
   components: {
     HelloWorld
   },
   methods: {
     ...mapActions("github", ["fetchGithubUsers"])
-  },
-  created() {
-    this.fetchGithubUsers();
-  },
-  computed: {
-    users() {
-      return this.$store.state.github.users;
-    }
   }
-});
+  // computed: mapState('github', {
+  //   users: (state: S) => state.users
+  // })
+})
+export default class AppComponent extends Vue {
+  $store!: Vuex.ExStore;
+
+  created() {
+    this.fetchGithubUsers()
+  }
+
+  get users() {
+    return this.$store.state.github.users;
+  }
+
+  fetchGithubUsers!: () => void;
+}
 </script>
 
 <style lang="scss">
