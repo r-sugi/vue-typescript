@@ -28,12 +28,19 @@ import { mapActions } from "vuex";
 export default class AppComponent extends Vue {
   $store!: Vuex.ExStore;
 
+  test = 'ff'
+
   created() {
     this.fetchGithubUsers();
   }
 
   get users() {
     return this.$store.state.github.users;
+  }
+
+  get userIds() {
+      // FIXME:
+    return this.users.map(u => u.id)
   }
 
   fetchGithubUsers!: () => void;

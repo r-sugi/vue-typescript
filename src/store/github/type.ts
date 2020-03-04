@@ -1,11 +1,11 @@
 import { GithubUserImpl } from "./class";
 
 interface S {
-  users: GithubUserImpl[] | [];
+  users: GithubUserImpl[] | never[];
 }
 
 interface G {
-  users: GithubUserImpl[] | [];
+  users: GithubUserImpl[] | never[];
 }
 
 interface RG {
