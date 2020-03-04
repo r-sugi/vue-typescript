@@ -119,27 +119,24 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import { Vue, Component, Prop } from "vue-property-decorator";
+import * as Vuex from "vuex";
 
-export default Vue.extend({
-  name: "HelloWorld",
-  props: {
-    msg: String
-  },
-  methods: {
-    increment(payload: { amount: number }) {
-      this.$store.commit("counter/setCount", payload); // $store: typeの定義が優先されるため、型の補完が効かない
-    }
-  },
-  computed: {
-    double() {
-      return this.$store.getters["counter/double"];
-    }
+@Component
+export default class HelloWorldComponent extends Vue {
+  $store!: Vuex.ExStore;
+  @Prop() readonly msg!: string;
+
+  increment(payload: { amount: number }) {
+    this.$store.commit("counter/setCount", payload);
   }
-});
+
+  get double() {
+    return this.$store.getters["counter/double"];
+  }
+}
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 h3 {
   margin: 40px 0 0;

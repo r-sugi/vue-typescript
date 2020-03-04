@@ -1,6 +1,6 @@
-import { IGithubUser } from "@/types/classes";
+import { GithubUser } from "@/types/classes";
 
-export class GithubUserDTO implements IGithubUser {
+export class GithubUserDTO implements GithubUser {
   login = "";
   id = 0;
   node_id = "";
@@ -34,7 +34,7 @@ export class GithubUserDTO implements IGithubUser {
   updated_at = "";
 }
 
-export class GithubUser extends GithubUserDTO {
+export class GithubUserImpl extends GithubUserDTO {
   constructor(dto: GithubUserDTO) {
     super();
     Object.assign(this, dto);
