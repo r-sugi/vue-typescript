@@ -32,9 +32,9 @@ jobs:
     - name: build
       run: npm run build
 
-    - name: deploy
-      uses: r-sugi/vue-typescript@master
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        publish_dir: ./dist
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.3.2
+      with:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: ./dist # The folder the action should deploy.
