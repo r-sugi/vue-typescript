@@ -14,8 +14,7 @@
 import { Vue, Component } from "vue-property-decorator";
 import * as Vuex from "vuex";
 import HelloWorld from "@/components/HelloWorld.vue";
-import { mapActions, mapState } from "vuex";
-import { S } from '@/store/github/type'
+import { mapActions } from "vuex";
 
 @Component({
   components: {
@@ -24,15 +23,12 @@ import { S } from '@/store/github/type'
   methods: {
     ...mapActions("github", ["fetchGithubUsers"])
   }
-  // computed: mapState('github', {
-  //   users: (state: S) => state.users
-  // })
 })
 export default class AppComponent extends Vue {
   $store!: Vuex.ExStore;
 
   created() {
-    this.fetchGithubUsers()
+    this.fetchGithubUsers();
   }
 
   get users() {
