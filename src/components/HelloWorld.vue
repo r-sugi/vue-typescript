@@ -2,11 +2,12 @@
   <div class="hello">
     <h2>{{ msg }}</h2>
     <h2>{{ state.localMsg }}</h2>
+    <button @click="hoge">emit example</button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from "@vue/composition-api";
+import { defineComponent, reactive, SetupContext } from "@vue/composition-api";
 
 type Props = {
   msg: string
@@ -19,13 +20,18 @@ export default defineComponent({
       default: "default Value"
     }
   },
-  setup(props: Props, context) {
+  setup(props: Props, context: SetupContext) {
     const state = reactive<{ localMsg: string }>({
-      localMsg: "local helloWorld"
+      localMsg: "helloWorld"
     });
 
+    const hoge = () => {
+      context.emit("click:button", props.msg.toUpperCase());
+    };
+
     return {
-      state
+      state,
+      hoge
     };
   }
 });

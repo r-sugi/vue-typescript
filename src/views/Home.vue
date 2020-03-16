@@ -1,6 +1,9 @@
 <template>
   <div class="home">
-    <HelloWorld :msg="state.msg + messageTwo" />
+    <HelloWorld
+      :msg="state.msg"
+      @click:button="changeMessage"
+    />
   </div>
 </template>
 
@@ -15,11 +18,14 @@ export default defineComponent({
     const state = reactive<{ msg: string }>({
       msg: "Hello"
     });
-    const messageTwo = ref<string>("こんにちは");
+
+    const changeMessage = (message: string) => {
+      state.msg = message;
+    };
 
     return {
       state,
-      messageTwo
+      changeMessage
     };
   }
 });
