@@ -1,18 +1,46 @@
 <template>
   <div class="hello">
     <h2>{{ msg }}</h2>
-    <h2>{{ state.localMsg }}</h2>
     <button @click="hoge">emit example</button>
+    <div>
+      <button @click="decrement">
+        -
+      </button>
+      <span class="count">
+        {{ count }}
+      </span>
+      <button @click="increment">
+        +
+      </button>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, SetupContext } from "@vue/composition-api";
+import {
+  defineComponent,
+  reactive,
+  SetupContext,
+  onMounted,
+  onUpdated,
+  onUnmounted,
+  toRefs
+} from "@vue/composition-api";
 
 type Props = {
-  msg: string
-}
+  msg: string;
+};
+
+const useCount = () => {
+  const countState = reactive({ count: 0 });
+  return {
+    ...toRefs(countState), // 参照をつける
+  };
+};
+
+
 export default defineComponent({
+  name: "HelloWorld",
   props: {
     msg: {
       type: String,
@@ -21,17 +49,31 @@ export default defineComponent({
     }
   },
   setup(props: Props, context: SetupContext) {
-    const state = reactive<{ localMsg: string }>({
-      localMsg: "helloWorld"
+    onMounted(() => {
+      console.log("HelloWorld mounted!");
     });
+    onUpdated(() => {
+      console.log("HelloWorld updated!");
+    });
+    onUnmounted(() => {
+      console.log("HelloWorld unmounted!");
+    });
+
+    const { count } = useCount();
 
     const hoge = () => {
       context.emit("click:button", props.msg.toUpperCase());
     };
 
     return {
-      state,
-      hoge
+      hoge,
+      count,
+      increment() {
+        count.value++
+      },
+      decrement() {
+        count.value--
+      }
     };
   }
 });
