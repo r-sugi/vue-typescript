@@ -5,19 +5,17 @@
 </template>
 
 <script lang="ts">
-import { onServerPrefetch, SetupContext, ref } from '@vue/composition-api';
-import { GithubApi } from '@/lib/api/apiClient.ts'
+import { ref } from "@vue/composition-api";
 
 export default {
-  name: 'users',
-  setup (props, context: SetupContext) {
+  name: "users",
+  setup() {
     const result = ref(1);
 
     return {
-      result,
+      result
     };
-  },
-}
+  }
+};
 </script>
-<style lang="scss">
-</style>
+<style lang="scss"></style>

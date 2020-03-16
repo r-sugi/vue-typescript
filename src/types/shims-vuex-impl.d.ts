@@ -1,5 +1,5 @@
 import "vuex";
-import * as Counter from "@/store/counter/type";
+import * as Counter from "@/store/counterSample/type";
 import * as Github from "@/store/github/type";
 
 declare module "vuex" {

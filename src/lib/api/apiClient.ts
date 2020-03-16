@@ -5,7 +5,7 @@ export class GithubApi {
   static fetchUsers(): any {
     const url = "/users";
     return $axios({
-      baseURL: 'https://api.github.com',
+      baseURL: "https://api.github.com",
       url
     });
   }

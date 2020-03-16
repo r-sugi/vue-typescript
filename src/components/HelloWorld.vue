@@ -12,6 +12,7 @@
       <button @click="increment">
         +
       </button>
+      <p>{{ test }}</p>
     </div>
   </div>
 </template>
@@ -24,20 +25,15 @@ import {
   onMounted,
   onUpdated,
   onUnmounted,
-  toRefs
+  toRefs,
+  computed
 } from "@vue/composition-api";
 
 type Props = {
   msg: string;
 };
 
-const useCount = () => {
-  const countState = reactive({ count: 0 });
-  return {
-    ...toRefs(countState), // 参照をつける
-  };
-};
-
+import { counterStore } from "@/store/counter";
 
 export default defineComponent({
   name: "HelloWorld",
@@ -59,20 +55,22 @@ export default defineComponent({
       console.log("HelloWorld unmounted!");
     });
 
-    const { count } = useCount();
+    const counter = counterStore();
+    const count = computed(() => counter.count);
 
     const hoge = () => {
       context.emit("click:button", props.msg.toUpperCase());
     };
 
+    counter.increment();
+
     return {
       hoge,
+      test: counter.countObj.foo,
       count,
-      increment() {
-        count.value++
-      },
+      increment: () => counter.increment(),
       decrement() {
-        count.value--
+        counter.decrement();
       }
     };
   }

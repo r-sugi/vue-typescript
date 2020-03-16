@@ -8,17 +8,14 @@ const state: S = {
 
 const actions: Actions<S, A, G, M> = {
   fetchGithubUsers({ commit }) {
-    console.log('actions')
+    console.log("actions");
     GithubApi.fetchUsers()
       .then(res => {
-        console.log('then')
-        commit(
-          "setGithubUsers",
-          res.data
-        );
+        console.log("then");
+        commit("setGithubUsers", res.data);
       })
       .catch(e => {
-        console.log('error')
+        console.log("error");
         throw e;
       });
   }

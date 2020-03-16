@@ -8,9 +8,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from "@vue/composition-api";
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from "@/components/HelloWorld.vue";
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
     HelloWorld
   },
