@@ -1,21 +1,26 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HelloWorld :msg="state.msg + messageTwo" />
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import * as Vuex from "vuex";
-import HelloWorld from "@/components/HelloWorld.vue";
-
-@Component({
+import { defineComponent, reactive, ref } from "@vue/composition-api";
+import HelloWorld from '@/components/HelloWorld.vue'
+export default defineComponent({
   components: {
     HelloWorld
+  },
+  setup() {
+    const state = reactive<{ msg: string }>({
+      msg: "Hello"
+    });
+    const messageTwo = ref<string>("こんにちは");
+
+    return {
+      state,
+      messageTwo
+    };
   }
-})
-export default class HomeComponent extends Vue {
-  $store!: Vuex.ExStore;
-}
+});
 </script>

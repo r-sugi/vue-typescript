@@ -4,6 +4,8 @@ import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
 import VueCookies from "vue-cookies";
+import VueCompositionApi from '@vue/composition-api';
+Vue.use(VueCompositionApi);
 Vue.use(VueCookies);
 
 Vue.config.productionTip = false;
