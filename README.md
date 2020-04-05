@@ -18,6 +18,8 @@ yarn run build
 ### Run your tests
 ```
 yarn run test
+
+yarn test:unit --watch file/path.js
 ```
 
 ### Lints and fixes files

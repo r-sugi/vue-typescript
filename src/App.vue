@@ -1,13 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    テスト
-    <template v-if="users.length > 0">
-      <div v-for="u in users" :key="u.id">
-        <p>{{ u.hoge }}</p>
-      </div>
-    </template>
+    <router-view />
   </div>
 </template>
 
@@ -28,7 +22,7 @@ import { mapActions } from "vuex";
 export default class AppComponent extends Vue {
   $store!: Vuex.ExStore;
 
-  test = 'ff'
+  test = "ff";
 
   created() {
     this.fetchGithubUsers();
@@ -36,11 +30,6 @@ export default class AppComponent extends Vue {
 
   get users() {
     return this.$store.state.github.users;
-  }
-
-  get userIds() {
-      // FIXME:
-    return this.users.map(u => u.id)
   }
 
   fetchGithubUsers!: () => void;
