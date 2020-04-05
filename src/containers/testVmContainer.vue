@@ -1,5 +1,11 @@
 <template>
   <div>
+    <p>
+      <BaseCheckBox
+        @change="val => (checkBoxTest1 = val)"
+        :checked="checkBoxTest1"
+      />
+    </p>
     <BaseInput
       v-model="inputTest1"
       label="inputLabel"
@@ -29,9 +35,11 @@ import SelectBox from "@/components/selectBox";
 import TestAttrs from "@/components/testAttrs";
 import TestAttrs2 from "@/components/testAttrs2";
 import BaseInput from "@/components/BaseInput";
+import BaseCheckBox from "@/components/BaseCheckBox";
 export default {
   data() {
     return {
+      checkBoxTest1: false,
       selected: { value: 1 },
       selected2: { value: 0 },
       options: [
@@ -46,7 +54,8 @@ export default {
     SelectBox,
     TestAttrs,
     TestAttrs2,
-    BaseInput
+    BaseInput,
+    BaseCheckBox
   }
 };
 </script>
