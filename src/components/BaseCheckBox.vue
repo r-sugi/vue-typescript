@@ -1,24 +1,22 @@
 <template>
-  <input :checked="checked" type="checkbox" @change="onChange($event)" />
+  <label
+    >単一チェックボックス
+    <input @input="onChange" :checked="checked" type="checkbox" />
+  </label>
 </template>
 <script>
 export default {
   model: {
     prop: "checked",
-    event: "change"
+    event: "input"
   },
   props: {
-    // これによって、 `value` プロパティを別の目的で利用することを許可します
     value: null,
-    // `value` の代わりとなるプロパティとして `checked` を使います
-    checked: {
-      type: Boolean,
-      default: false
-    }
+    checked: Boolean
   },
   methods: {
     onChange($e) {
-      this.$emit("change", $e.target.checked);
+      this.$emit("input", $e.target.checked);
     }
   }
 };
