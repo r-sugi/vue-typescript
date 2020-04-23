@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "npx vue-cli-service serve --skip-plugins pwa",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
@@ -12,6 +12,7 @@
     "deploy:githubpage": "gh-pages -d dist"
   },
   "dependencies": {
+    "@vue/composition-api": "^0.4.0",
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "register-service-worker": "^1.6.2",
@@ -44,7 +45,6 @@
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.2",
     "typescript": "~3.7.5",
-    "vue-property-decorator": "^8.4.0",
     "vue-template-compiler": "^2.6.11"
   }
 }

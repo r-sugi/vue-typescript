@@ -1,11 +1,11 @@
 import { GithubUserImpl } from "./class";
 
 interface S {
-  users: GithubUserImpl[] | never[];
+  users: [];
 }
 
 interface G {
-  users: GithubUserImpl[] | never[];
+  users: [];
 }
 
 interface RG {
@@ -13,7 +13,7 @@ interface RG {
 }
 
 interface M {
-  setGithubUsers: GithubUserImpl[];
+  setGithubUsers: [];
 }
 
 interface RM {
@@ -21,7 +21,7 @@ interface RM {
 }
 
 interface A {
-  fetchGithubUsers: GithubUserImpl[];
+  fetchGithubUsers: [];
 }
 
 interface RA {

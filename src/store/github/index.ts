@@ -1,7 +1,6 @@
 import { Getters, Mutations, Actions } from "vuex";
 import { S, G, M, A } from "@/store/github/type";
 import { GithubApi } from "@/lib/api/apiClient";
-import { GithubUserImpl } from "./class";
 
 const state: S = {
   users: []
@@ -9,17 +8,14 @@ const state: S = {
 
 const actions: Actions<S, A, G, M> = {
   fetchGithubUsers({ commit }) {
-    console.log('actions')
+    console.log("actions");
     GithubApi.fetchUsers()
       .then(res => {
-        console.log('then')
-        commit(
-          "setGithubUsers",
-          res.data.map(userDTO => new GithubUserImpl(userDTO))
-        );
+        console.log("then");
+        commit("setGithubUsers", res.data);
       })
       .catch(e => {
-        console.log('error')
+        console.log("error");
         throw e;
       });
   }

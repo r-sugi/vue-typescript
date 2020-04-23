@@ -1,21 +1,46 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <HelloWorld :msg="state.msg" @click:button="changeMessage" />
+    <CounterProvider>
+      <InjectedDecrementButton />
+      <InjectedCounterDisplay />
+      <InjectedIncrementButton />
+    </CounterProvider>
+    <GlobalCounter />
   </div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import * as Vuex from "vuex";
+import { defineComponent, reactive, ref } from "@vue/composition-api";
 import HelloWorld from "@/components/HelloWorld.vue";
+import CounterProvider from "@/components/CounterProvider.vue";
+import InjectedDecrementButton from "@/components/InjectedDecrementButton.vue";
+import InjectedIncrementButton from "@/components/InjectedIncrementButton.vue";
+import InjectedCounterDisplay from "@/components/InjectedCounterDisplay.vue";
+import GlobalCounter from "@/components/GlobalCounter.vue"
 
-@Component({
+export default defineComponent({
   components: {
-    HelloWorld
+    HelloWorld,
+    CounterProvider,
+    InjectedDecrementButton,
+    InjectedIncrementButton,
+    InjectedCounterDisplay,
+    GlobalCounter
+  },
+  setup() {
+    const state = reactive<{ msg: string }>({
+      msg: "Hello"
+    });
+
+    const changeMessage = (message: string) => {
+      state.msg = message;
+    };
+
+    return {
+      state,
+      changeMessage
+    };
   }
-})
-export default class HomeComponent extends Vue {
-  $store!: Vuex.ExStore;
-}
+});
 </script>

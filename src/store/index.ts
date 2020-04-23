@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import counter from "@/store/counter/index";
+import counter from "@/store/counterSample/index";
 import github from "@/store/github/index";
 Vue.use(Vuex);
 
